@@ -5,8 +5,9 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 
-app.get('/', (req, res) => {
-    res.send('I am Alive!')
-})
+const mainRoutes = require('./routes/mainRoutes');
+app.use("/api", mainRoutes);
+
+app.use("/", express.static('public'));
 
 module.exports = app;
