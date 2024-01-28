@@ -86,8 +86,8 @@ module.exports.createNewPet = (req, res, next) =>
     }
     
     const data = {
-        petname: req.body.petname,
         user_id: req.body.user_id,
+        petname: req.body.petname,
         breeds: req.body.breeds, 
         notes: req.body.notes
     }

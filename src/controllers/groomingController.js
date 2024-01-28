@@ -99,7 +99,7 @@ module.exports.updateGroomingById = (req, res, next) =>
             });
         } else {
             const responseBody = {
-                groom_id:    parseInt(req.params.groom_id),
+                groom_id:    req.params.groom_id,
                 points:      req.body.points
             }
             res.status(200).json(responseBody);
