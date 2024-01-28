@@ -35,7 +35,7 @@ li a {
     text-decoration: none;
   }
   
-  li a:hover:not(.active) {
+li a:hover:not(.active) {
     background-color: #d9d9d9;
   }
   
@@ -71,23 +71,15 @@ li a {
     box-shadow: 0 0 0 4px rgba(var(--custom-color-light-rgb), 0.6);
 }
 
-/* footers */
-footer {
-    background: linear-gradient(to bottom,  #ddbd74, #eabf02, #a8a8a8);
-}
-
 /* text colour for footer*/
 footer p {
     color: #000000;
 }
 
 footer {
-    background-color: #007bff; 
+    background: linear-gradient(to bottom,  #ddbd74, #eabf02, #a8a8a8);
     color: #ffffff; 
     padding: 2.5rem 0; 
     text-align: center; 
   }
   
-footer a:hover {
-    text-decoration: underline; 
-  }

@@ -5,6 +5,7 @@
 const express = require('express');
 const router = express.Router();
 
+const groomingRoutes = require('./groomingRoutes');
 const petrestRoutes = require('./petrestRoutes');
 const petbondingRoutes = require('./petbondingRoutes');
 const petRoutes = require('./petRoutes');
@@ -16,11 +17,12 @@ const userController = require('../controllers/userController');
 const bcryptMiddleware = require('../middlewares/bcryptMiddleware');
 const jwtMiddleware = require('../middlewares/jwtMiddleware');
 
-router.use("/petrestRoutes", petrestRoutes);
-router.use("/petbondingRoutes", petbondingRoutes);
-router.use("/petRoutes", petRoutes);
-router.use("/taskprogressRoutes", taskprogressRoutes);
-router.use("/taskRoutes", taskRoutes);
+router.use("/grooming", groomingRoutes);
+router.use("/petrest", petrestRoutes);
+router.use("/petbonding", petbondingRoutes);
+router.use("/pet", petRoutes);
+router.use("/taskprogress", taskprogressRoutes);
+router.use("/task", taskRoutes);
 router.use("/user", userRoutes);
 
 router.post("/login", userController.login, bcryptMiddleware.comparePassword, jwtMiddleware.generateToken, jwtMiddleware.sendToken);

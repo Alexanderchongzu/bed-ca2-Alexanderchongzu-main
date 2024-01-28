@@ -61,10 +61,7 @@ CREATE TABLE PetRest (
 
 CREATE TABLE Grooming (
     groom_id INT PRIMARY KEY AUTO_INCREMENT,
-    classic INT NOT NULL,
-    advance INT NOT NULL,
-    special INT NOT NULL,
-    points INT NOT NULL
+    points INT 
 );
 
 INSERT INTO Task (title, description, points) VALUES
