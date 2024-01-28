@@ -1,7 +1,7 @@
 body
 {
     font-family: sans-serif;
-    background-color: #dcffef;
+    background-color: #6B9493;
 }
 
 main
@@ -27,4 +27,5 @@ header img {
     max-height: 800px; /* Set a maximum height if needed */
     object-fit: cover; /* Ensure the image covers the entire container */
 }
-  
+
+

@@ -1,3 +1,6 @@
+// Name: Alexander Yip Chong Zu
+// Admin No.: 2201788
+// Class: DIT/FT/1B/01
 
 // REQUIRE BCRYPT MODULE
 const bcrypt = require("bcrypt");

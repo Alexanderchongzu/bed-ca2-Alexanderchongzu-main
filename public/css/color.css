@@ -27,7 +27,18 @@
     font-weight: bold;
 }
 
-
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover:not(.active) {
+    background-color: #d9d9d9;
+  }
+  
 
 /* primary button */
 .btn-primary {
@@ -62,10 +73,21 @@
 
 /* footers */
 footer {
-    background: linear-gradient(to bottom, #ffffff, #ddbd74, #eabf02);
+    background: linear-gradient(to bottom,  #ddbd74, #eabf02, #a8a8a8);
 }
 
 /* text colour for footer*/
 footer p {
     color: #000000;
 }
+
+footer {
+    background-color: #007bff; 
+    color: #ffffff; 
+    padding: 2.5rem 0; 
+    text-align: center; 
+  }
+  
+footer a:hover {
+    text-decoration: underline; 
+  }
