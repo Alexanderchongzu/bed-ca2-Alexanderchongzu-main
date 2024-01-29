@@ -41,11 +41,11 @@ module.exports.checkPetUser = (data, callback) => //Endpoint B.1--Post a pet
 module.exports.createNewPet = (data, callback) => //Endpoint B.1--Post a pet
 {
     const SQLSTATEMENT = `
-        INSERT INTO Pet (petname, user_id, breeds, notes)
+        INSERT INTO Pet (username, petname, breeds, notes)
         VALUES (?, ?, ?, ?);
         `;
 
-    const VALUES = [ data.petname, data.user_id, data.breeds, data.notes];
+    const VALUES = [ data.username, data.petname, data.breeds, data.notes];
 
     pool.query(SQLSTATEMENT, VALUES, callback);
 }

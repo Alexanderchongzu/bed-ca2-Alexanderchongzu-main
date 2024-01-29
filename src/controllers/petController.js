@@ -5,78 +5,78 @@
 const model = require("../models/petModel");
 
 /// Endpoint B.1--Post a Pet
-module.exports.checkUserId = (req, res, next) =>
-{
-    const data = {
-        user_id: req.body.user_id
-    }
+// module.exports.checkUserId = (req, res, next) =>
+// {
+//     const data = {
+//         user_id: req.body.user_id
+//     }
 
-    const callback = (error, results, fields) => {
-        if (error) {
-            console.error("Error checkUserId:", error);
-            res.status(500).json(error);
-        } else {
-            if (results.length == 0) {
-                res.status(404).json({
-                    message: "User not found"
-                });
-            } else {
-                next();
-            }
-        }
-    }
+//     const callback = (error, results, fields) => {
+//         if (error) {
+//             console.error("Error checkUserId:", error);
+//             res.status(500).json(error);
+//         } else {
+//             if (results.length == 0) {
+//                 res.status(404).json({
+//                     message: "User not found"
+//                 });
+//             } else {
+//                 next();
+//             }
+//         }
+//     }
 
-    model.checkUserId(data, callback);
-}
+//     model.checkUserId(data, callback);
+// }
 
-module.exports.duplicatePetName = (req, res, next) =>
-{
-    const data = {
-        petname: req.body.petname
-    }
+// module.exports.duplicatePetName = (req, res, next) =>
+// {
+//     const data = {
+//         petname: req.body.petname
+//     }
 
-    const callback = (error, results, fields) => {
-        if (error) {
-            console.error("Error petname:", error);
-            res.status(500).json(error);
-        } else {
-            if (results.length > 0) {
-                res.status(409).json({
-                    message: "petname is associated with another Pet"
-                });
-            } else {
-                next();
-            }
-        }
-    }
+//     const callback = (error, results, fields) => {
+//         if (error) {
+//             console.error("Error petname:", error);
+//             res.status(500).json(error);
+//         } else {
+//             if (results.length > 0) {
+//                 res.status(409).json({
+//                     message: "petname is associated with another Pet"
+//                 });
+//             } else {
+//                 next();
+//             }
+//         }
+//     }
 
-    model.duplicatePetName(data, callback);
-}
-module.exports.checkPetUser = (req, res, next) =>
-{
-    const data = {
-        petname: req.body.petname,
-        user_id: req.body.user_id
-    }
+//     model.duplicatePetName(data, callback);
+// }
+// module.exports.checkPetUser = (req, res, next) =>
+// {
+//     const data = {
+//         petname: req.body.petname,
+//         user_id: req.body.user_id
+//     }
 
-    const callback = (error, results, fields) => {
-        if (error) {
-            console.error("Error petname:", error);
-            res.status(500).json(error);
-        } else {
-            const petCount = results[0].petCount;
-            if (petCount >= 3) {
-                res.status(409).json({
-                    message: "User already has three pets."
-                });
-            } else {
-                next();
-            }
-        }
-    }
+//     const callback = (error, results, fields) => {
+//         if (error) {
+//             console.error("Error petname:", error);
+//             res.status(500).json(error);
+//         } else {
+//             const petCount = results[0].petCount;
+//             if (petCount >= 3) {
+//                 res.status(409).json({
+//                     message: "User already has three pets."
+//                 });
+//             } else {
+//                 next();
+//             }
+//         }
+//     }
 
-    model.checkPetUser(data, callback);
-}
+//     model.checkPetUser(data, callback);
+// }
 module.exports.createNewPet = (req, res, next) =>
 {    
     if (req.body.petname == undefined || req.body.breeds == undefined || req.body.notes == undefined)
@@ -86,7 +86,7 @@ module.exports.createNewPet = (req, res, next) =>
     }
     
     const data = {
-        user_id: req.body.user_id,
+        username: req.body.username,
         petname: req.body.petname,
         breeds: req.body.breeds, 
         notes: req.body.notes
@@ -102,7 +102,7 @@ module.exports.createNewPet = (req, res, next) =>
         } else {
             const responseBody = {
                 pet_id: parseInt(results.insertId),
-                user_id: req.body.user_id,
+                username: req.body.username,
                 petname: req.body.petname,
                 breeds: req.body.breeds,
                 notes: req.body.notes

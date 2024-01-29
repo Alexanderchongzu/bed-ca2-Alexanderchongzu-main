@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (responseData.token) {
         // Store the token in local storage
         localStorage.setItem("token", responseData.token);
+        localStorage.setItem("user_id", responseData.user_id);
         // Redirect or perform further actions for logged-in user
         window.location.href = "profile.html";
       }
@@ -30,14 +31,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
-
+    localStorage.setItem("username", username);
     const data = {
       username: username,
       password: password,
     };
     // Perform login request
-    fetchMethod(currentUrl + "/api/login", callback, "POST", data);
+    fetchMethod(currentUrl + "/login", callback, "POST", data);
 
+    
     // Reset the form fields
     loginForm.reset();
   });
@@ -51,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
           // Perform further actions with the email (e.g., initiate password reset request to the server)
       // You can make an AJAX request or use fetch to send the email to your server
       // For example:
-      fetch(currentUrl + "/api/reset-password", {
+      fetch(currentUrl + "/reset-password", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

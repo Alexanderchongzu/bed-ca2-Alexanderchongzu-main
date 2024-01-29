@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const warningCard = document.getElementById("warningCard");
   const warningText = document.getElementById("warningText");
 
+
   // Rest of the code will be added here
   signupForm.addEventListener("submit", function (event) {
     event.preventDefault();
@@ -46,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
       };
 
       // Perform signup request
-      fetchMethod(currentUrl + "/api/register", callback, "POST", data);
+      fetchMethod(currentUrl + "/register", callback, "POST", data);
 
       // Reset the form fields
       signupForm.reset();

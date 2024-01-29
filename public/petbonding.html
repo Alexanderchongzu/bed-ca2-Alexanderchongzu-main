@@ -28,6 +28,9 @@
             <a class="nav-link" href="index.html">Home</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="addpet.html">Add Pet</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="grooming.html">Grooming</a>
           </li>
           <li class="nav-item">
@@ -67,83 +70,19 @@
           <br><br><br>
           <h6 class="mb-6 text-center" style="font-family: verdana, sans-serif; font-size: 40px;">Pet Bonding</h6>
           <div class="container">
-            <div id="bondingList" class="row">
-              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 p-3">
-                <div class="card">
-                  <div class="card-body">
-                    <h7 class="card-title" style="font-weight: bold">Admin</h7>
-                    <p class="card-text">
-                      "Petbonding ID:"
-                      <br>
-                      "Pet ID:"
-                      <br>
-                      "Groom ID:"
-                      <br>
-                      "Feed:"
-                    </p>
-                  </div>
-                  </div>
-                  <a id="sendgroomingButton" href="grooming.html" class="btn text-bg-primary btn navbar-btn">Send for Grooming</a> 
-
-                </div>
-                <script>
-                  // Function to fetch pet bonding data from the API
-                  async function fetchPetBondingData() {
-                    try {
-                      const response = await fetch('/api/petbonding'); // Replace with your actual endpoint
-                      if (!response.ok) {
-                        throw new Error('Failed to fetch data');
-                      }
-                      const data = await response.json();
-                      return data;
-                    } catch (error) {
-                      console.error('Error fetching pet bonding data:', error);
-                      return null;
-                    }
-                  }
-            
-                  // Function to dynamically create cards for displaying pet bonding data
-                  async function displayPetBondingData() {
-                    const bondingListContainer = document.getElementById('bondingList');
-                    bondingListContainer.innerHTML = ''; // Clear previous content
-            
-                    const petBondingData = await fetchPetBondingData();
-                    if (!petBondingData) return; // Exit if data fetch failed
-            
-                    petBondingData.forEach(bonding => {
-                      const cardDiv = document.createElement('div');
-                      cardDiv.classList.add('col-xl-4', 'col-lg-4', 'col-md-6', 'col-sm-12', 'col-xs-12', 'p-3');
-                      cardDiv.innerHTML = `
-                        <div class="card">
-                          <div class="card-body">
-                            <h7 class="card-title" style="font-weight: bold">Admin</h7>
-                            <p class="card-text">
-                              "Petbonding ID: ${bonding.petbonding_id}"
-                              <br>
-                              "Pet ID: ${bonding.pet_id}"
-                              <br>
-                              "Groom ID: ${bonding.groom_id}"
-                              <br>
-                              "Feed: ${bonding.feed}"
-                            </p>
-                          </div>
-                        </div>
-                      `;
-                      bondingListContainer.appendChild(cardDiv);
-                    });
-                  }
-            
-                  // Call the function to display pet bonding data
-                  displayPetBondingData();
-                </script>                
-              </div>
-            </div>
+            <div id="bondingList" class="row"></div>
           </div>
+
         </div>
+
       </div>
     </div>
     </div>
-   
+    </div>
+    </div>
+    </div>
+    </div>
+
     </div>
   </main>
 
@@ -167,7 +106,7 @@
   <script src="js/queryCmds.js" type="text/javascript"></script>
   <script src="js/getCurrentURL.js" type="text/javascript"></script>
   <script src="js/userNavbarToggle.js" type="text/javascript"></script>
-  <script src="js/showUserPet.js" type="text/javascript"></script>
+  <script src="js/petBonding.js" type="text/javascript"></script>
 
 
 

@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function fetchUserInfo() {
-    fetch('/api/user')
+    fetch('/user')
     .then(response => {
         if (!response.ok) {
             throw new Error('Network response was not ok');

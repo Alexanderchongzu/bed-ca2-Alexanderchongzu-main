@@ -39,7 +39,7 @@ CREATE TABLE TaskProgress (
 
 CREATE TABLE Pet (
     pet_id INT PRIMARY KEY AUTO_INCREMENT,
-    user_id INT NOT NULL,
+    username TEXT,
     petname TEXT,
     breeds TEXT,
     notes TEXT

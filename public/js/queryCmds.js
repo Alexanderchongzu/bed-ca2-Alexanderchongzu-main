@@ -1,6 +1,6 @@
 //=====================================================================================
 // FETCH METHOD
-// This function uses the fetch API to make a request to the server.
+// This function uses the fetch to make a request to the server.
 //=====================================================================================
 function fetchMethod(url, callback, method = "GET", data = null, token = null) {
   console.log("fetchMethod: ", url, method, data, token);
