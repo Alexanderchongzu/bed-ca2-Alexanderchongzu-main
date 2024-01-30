@@ -36,7 +36,7 @@ module.exports.insertSingle = (data, callback) => //Endpoint A.1
     pool.query(SQLSTATMENT, VALUES, callback);
 }
 
-module.exports.retrieveAll = (callback) => //Endpoint A.2
+module.exports.retrieveAll = (callback) => //Endpoint A.2A
 {
     const SQLSTATMENT = `
     SELECT * FROM User;
@@ -45,6 +45,14 @@ module.exports.retrieveAll = (callback) => //Endpoint A.2
     pool.query(SQLSTATMENT, callback);
 }
 
+module.exports.retrieveUsername = (callback) => //Endpoint A.2B
+{
+    const SQLSTATMENT = `
+    SELECT username FROM User;
+    `;
+
+    pool.query(SQLSTATMENT, callback);
+}
 module.exports.retrieveById = (data, callback) => //Endpoint A.3
 {
     const SQLSTATMENT = `

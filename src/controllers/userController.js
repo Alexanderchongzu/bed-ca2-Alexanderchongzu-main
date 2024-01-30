@@ -63,7 +63,7 @@ module.exports.createNewUser = (req, res, next) =>
 }
 
 
-/// Endpoint A.2: Retrieve all user
+/// Endpoint A.2A: Retrieve all user
 module.exports.retrieveAllUser = (req, res, next) =>
 {
     const callback = (error, results, fields) => {
@@ -77,6 +77,19 @@ module.exports.retrieveAllUser = (req, res, next) =>
     model.retrieveAll(callback);
 }
 
+/// Endpoint A.2B: Retrieve ONLY username
+module.exports.retrieveUsername = (req, res, next) =>
+{
+    const callback = (error, results, fields) => {
+        if (error) {
+            console.error("Error RetrieveAllUser:", error);
+            res.status(500).json(error);
+        } 
+        else res.status(200).json(results);
+    }
+
+    model.retrieveUsername(callback);
+}
 /// Endpoint A.3: Retrieve all user by id
 module.exports.retrieveUserById = (req, res, next) =>
 {
