@@ -22,4 +22,4 @@ const callback = (responseStatus, responseData) => {
     });
 }
 
-fetchMethod(currentUrl + "/pet", callback);
+fetchMethod(currentUrl + "/api/pet", callback);

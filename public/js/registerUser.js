@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
       };
 
       // Perform signup request
-      fetchMethod(currentUrl + "/register", callback, "POST", data);
+      fetchMethod(currentUrl + "/api/register", callback, "POST", data);
 
       // Reset the form fields
       signupForm.reset();

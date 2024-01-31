@@ -1,23 +1,27 @@
-document.addEventListener('DOMContentLoaded', function() {
-    fetchUserInfo();
-});
-
-function fetchUserInfo() {
-    fetch('/user')
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(data => {
-        // Update HTML content with user information
-        const userInfoElement = document.getElementById('userInfo');
-        userInfoElement.innerHTML = `
-            <strong>User ID:</strong> ${data.user_id}<br>
-            <strong>Username:</strong> ${data.username}<br>
-            <strong>Email:</strong> ${data.email}<br>
-        `;
-    })
-    .catch(error => console.error('Error fetching user information:', error));
-}
+document.addEventListener("DOMContentLoaded", function () {
+   const userID = localStorage.getItem("user_id");
+  console.log(userID)
+    const callbackForPlayerInfo = (responseStatus, responseData) => {
+      console.log("responseStatus:", responseStatus);
+      console.log("responseData:", responseData);
+  
+      const userProfileinfo = document.getElementById("userProfileinfo");
+  
+      if (responseStatus == 404) {
+        userProfileinfo.innerHTML = `${responseData.message}`;
+        return;
+      }
+  
+      userProfileinfo.innerHTML = `
+          <div class="card">
+              <div class="card-body">
+                  <p class="card-text">
+                      User Name: ${responseData.username} <br>
+                  </p>
+              </div>
+          </div>
+      `;
+    };
+  
+    fetchMethod(currentUrl + `/api/user/${userID}`, callbackForPlayerInfo);
+  });

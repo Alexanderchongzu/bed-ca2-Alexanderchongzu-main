@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
       };
 
       // Perform signup request
-      fetchMethod(currentUrl + "/pet", callback, "POST", data);
+      fetchMethod(currentUrl + "/api/pet", callback, "POST", data);
       //////////////////////////change the endpoint//////////
       // Reset the form fields
       addpetForm.reset();

@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
     // Check if token exists in local storage
     const token = localStorage.getItem("token");
+    const username = localStorage.getItem("username");
     if (token) {
       // Token exists, show profile button and hide login and register buttons
       loginButton.classList.add("d-none");
