@@ -6,6 +6,7 @@ const express = require('express');
 const router = express.Router();
 
 const groomingRoutes = require('./groomingRoutes');
+const messageRoutes = require('./messageRoutes');
 const petrestRoutes = require('./petrestRoutes');
 const petbondingRoutes = require('./petbondingRoutes');
 const petRoutes = require('./petRoutes');
@@ -18,6 +19,7 @@ const bcryptMiddleware = require('../middlewares/bcryptMiddleware');
 const jwtMiddleware = require('../middlewares/jwtMiddleware');
 
 router.use("/grooming", groomingRoutes);
+router.use("/message", messageRoutes);
 router.use("/petrest", petrestRoutes);
 router.use("/petbonding", petbondingRoutes);
 router.use("/pet", petRoutes);

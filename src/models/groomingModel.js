@@ -59,3 +59,15 @@ module.exports.deleteGroomingById = (data, callback) => //Endpoint A.10
 
     pool.query(SQLSTATMENT, VALUES, callback);
 }
+
+module.exports.updateGroomingPoints = (data, callback) => //Endpoint A.9
+{
+    const SQLSTATMENT = `
+        UPDATE Grooming
+        SET points = points-30
+        WHERE groom_id = ?;
+        `;
+    const VALUES = [data.points, data.groom_id];
+
+    pool.query(SQLSTATMENT, VALUES, callback);
+}

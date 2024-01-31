@@ -11,5 +11,6 @@ router.get('/', controller.retrieveAllGrooming); // Endpoint A.7
 router.get('/:groom_id', controller.retrieveGroomingById); // Endpoint A.8
 router.put('/:groom_id', controller.updateGroomingById); // Endpoint A.9
 router.delete('/:groom_id', controller.deleteGroomingById); //Endpoint A.10
+router.put('/groompoints/:groom_id', controller.updateGroomingPoints); // Endpoint A.9
 
 module.exports = router;

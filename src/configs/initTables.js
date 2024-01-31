@@ -15,6 +15,8 @@ DROP TABLE IF EXISTS PetRest;
 
 DROP TABLE IF EXISTS Grooming;
 
+DROP TABLE IF EXISTS Messages;
+
 CREATE TABLE User (
     user_id INT PRIMARY KEY AUTO_INCREMENT,
     username TEXT,
@@ -64,6 +66,19 @@ CREATE TABLE Grooming (
     points INT 
 );
 
+CREATE TABLE Messages (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    message_text TEXT NOT NULL,
+    user_id INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  );
+  
+INSERT INTO Messages (message_text, user_id) VALUES
+    ("Hello world!", 1),
+    ("Yummy!", 2),  
+    ("I am the one", 3);
+
+
 INSERT INTO Task (title, description, points) VALUES
 ('Plant a Tree', 'Plant a tree in your neighbourhood or a designated green area.', 50),
 ('Use Public Transportation', 'Use public transportation or carpool instead of driving alone.', 30),
@@ -72,7 +87,7 @@ INSERT INTO Task (title, description, points) VALUES
 ('Composting', 'Start composting kitchen scraps to create natural fertilizer.', 35);
 
 
-`
+`;
 
 
 

@@ -133,3 +133,36 @@ module.exports.deleteGroomingById = (req, res, next) =>
 
     model.deleteGroomingById(data, callback);
 }
+
+
+module.exports.updateGroomingPoints = (req, res, next) =>
+{
+    if (req.body.groom_id == undefined || req.body.points == undefined)
+    {
+        res.status(400).json({
+            message: "Bad Request"
+        });
+        return;
+    }
+
+    const data = {
+        groom_id:  req.body.groom_id,
+        points:    req.body.points
+    }
+
+    const callback = (error, results, fields) => {
+        if (results.affectedRows == 0) {
+            res.status(404).json({
+                message: "Groom not found"
+            });
+        } else {
+            const responseBody = {
+                groom_id:    req.params.groom_id,
+                points:      req.body.points
+            }
+            res.status(200).json(responseBody);
+        }
+    }
+
+    model.updateGroomingById(data, callback);
+}
