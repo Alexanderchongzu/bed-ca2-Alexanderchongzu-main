@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log("responseStatus:", responseStatus);
             console.log("responseData:", responseData);
             if (responseStatus == 200) {
-                window.location.href = "message.html"
+                // window.location.href = "message.html"
             } else {
                 warningCard.classList.remove("d-none");
                 warningText.innerText = responseData.message;

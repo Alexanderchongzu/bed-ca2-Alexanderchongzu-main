@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     // Store username
-    // localstorage.setItem("username", username);
+    localStorage.setItem("username", username);
 
     // Perform login request
     fetchMethod(currentUrl + "/api/login", callback, "POST", data);
@@ -48,36 +48,36 @@ document.addEventListener("DOMContentLoaded", function () {
     loginForm.reset();
   });
 
-  // forgetPasswordLink.addEventListener("click", function (event) {
-  //     event.preventDefault();
+  forgetPasswordLink.addEventListener("click", function (event) {
+      event.preventDefault();
 
-  //     const userEmail = prompt("Please enter your email address:");
-  //     if (userEmail) {
-  //       console.log(`Initiate password reset for email: ${userEmail}`);
-  //         // Perform further actions with the email (e.g., initiate password reset request to the server)
-  //     // You can make an AJAX request or use fetch to send the email to your server
-  //     // For example:
-  //     fetch(currentUrl + "/reset-password", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({ email: userEmail }),
-  //     })
-  //     .then(response => response.json())
-  //     .then(data => console.log(data))
-  //     .catch(error => console.error(error));
-  //     }
-  // });
+      const userEmail = prompt("Please enter your email address:");
+      if (userEmail) {
+        console.log(`Initiate password reset for email: ${userEmail}`);
+          // Perform further actions with the email (e.g., initiate password reset request to the server)
+      // You can make an AJAX request or use fetch to send the email to your server
+      // For example:
+      fetch(currentUrl + "/reset-password", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: userEmail }),
+      })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error(error));
+      }
+  });
 
-  // forgetPasswordSubmitButton.addEventListener("click", function () {
-  //     const userEmail = document.getElementById("forgetPasswordEmail").value;
-  //     // Here you would typically make a request to your server to initiate the password reset process
-  //     // This can involve sending a reset link to the provided email address
-  //     console.log(`Initiate password reset for email: ${userEmail}`);
+  forgetPasswordSubmitButton.addEventListener("click", function () {
+      const userEmail = document.getElementById("forgetPasswordEmail").value;
+      // Here you would typically make a request to your server to initiate the password reset process
+      // This can involve sending a reset link to the provided email address
+      console.log(`Initiate password reset for email: ${userEmail}`);
   
-  //     // Close the modal after processing
-  //     $('#forgetPasswordModal').modal('hide');
-  // });
+      // Close the modal after processing
+      $('#forgetPasswordModal').modal('hide');
+  });
 
 });

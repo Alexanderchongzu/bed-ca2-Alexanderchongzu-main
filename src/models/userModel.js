@@ -56,11 +56,16 @@ module.exports.retrieveUsername = (callback) => //Endpoint A.2B
 module.exports.retrieveById = (data, callback) => //Endpoint A.3
 {
     const SQLSTATMENT = `
-    SELECT *
-    FROM User
-    WHERE user_id = ?;
+    SELECT user.user_id, 
+    user.username,
+    user.email,
+    COALESCE(SUM(task.points), 0) AS total_points
+    FROM user
+    LEFT JOIN taskprogress ON user.user_id = taskprogress.user_id
+    LEFT JOIN task ON taskprogress.task_id = task.task_id
+    WHERE user.user_id = ?;
     `;
-    const VALUES = [ data.user_id];
+    const VALUES = [data.user_id];
 
     pool.query(SQLSTATMENT, VALUES, callback);
 }

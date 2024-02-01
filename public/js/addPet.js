@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const warningText = document.getElementById("warningText");
   const username = localStorage.getItem("username");
   document.getElementById("username").value = username;
-
+  console.log(username);
   // Rest of the code will be added here
   addpetForm.addEventListener("submit", function (event) {
     event.preventDefault();
@@ -12,20 +12,20 @@ document.addEventListener("DOMContentLoaded", function () {
     // Rest of the code will be added here
     const username = document.getElementById("username").value;
     const petname = document.getElementById("petname").value;
-    const breed = document.getElementById("breed").value;
+    const breeds = document.getElementById("breeds").value;
     const notes = document.getElementById("notes").value;
 
 
       console.log("Signup successful");
       console.log("Username:", username);
       console.log("Petname:", petname);
-      console.log("Breed:", breed);
+      console.log("Breeds:", breeds);
       console.log("Notes:", notes);
 
       const data = {
         username: username,
         petname: petname,
-        breeds: breed,
+        breeds: breeds,
         notes: notes
       };
 
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("responseStatus:", responseStatus);
         console.log("responseData:", responseData);
         if (responseStatus == 201) {
-            window.location.href = "petbonding.html";
+            window.location.href = "petlist.html";
             /////////change the profile.html to other location
         } else {
           warningCard.classList.remove("d-none");
