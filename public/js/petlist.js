@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         <p><strong>Pet Name:</strong> ${pet.petname}</p>
                         <p><strong>Breeds:</strong> ${pet.breeds}</p>
                         <p><strong>Notes:</strong> ${pet.notes}</p>
-                        <hr>
+                        <hr>              
                     `;
                     petList.appendChild(petItem);
                 } else {

@@ -8,7 +8,8 @@ document.addEventListener("DOMContentLoaded", function () {
       if (responseData.token) {
         // Store the token in local storage
         localStorage.setItem("token", responseData.token);
-        localStorage.setItem("user_id", responseData.userId);
+        localStorage.setItem("userId", responseData.userId);
+        localStorage.setItem("email", responseData.email);
         // Redirect or perform further actions for logged-in user
         window.location.href = "home.html";
       }
@@ -48,6 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
     loginForm.reset();
   });
 
+  
   forgetPasswordLink.addEventListener("click", function (event) {
       event.preventDefault();
 

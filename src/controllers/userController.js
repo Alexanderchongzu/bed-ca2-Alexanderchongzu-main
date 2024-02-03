@@ -80,6 +80,34 @@ module.exports.retrieveAllUser = (req, res, next) =>
 /// Endpoint A.2B: Retrieve ONLY username
 module.exports.retrieveUsername = (req, res, next) =>
 {
+  
+    const data = {
+        username: req.params.username
+     }
+ 
+     const callback = (error, results, fields) => {
+ 
+         if (error) {
+             console.error("Error RetrieveUserByName:", error);
+             res.status(500).json(error);
+         } else if (results[0].username == null) {
+             {
+                 res.status(404).json({
+                     message: "User Not Found"
+                 });
+                 return;
+             }
+         } else {
+             res.status(200).json(results[0]);
+         }
+     }
+
+    model.retrieveUsername(callback);
+}
+
+/// Endpoint A.2C: Retrieve user and task
+module.exports.usertask = (req, res, next) =>
+{
     const callback = (error, results, fields) => {
         if (error) {
             console.error("Error RetrieveAllUser:", error);
@@ -88,8 +116,9 @@ module.exports.retrieveUsername = (req, res, next) =>
         else res.status(200).json(results);
     }
 
-    model.retrieveUsername(callback);
+    model.usertask(callback);
 }
+
 /// Endpoint A.3: Retrieve all user by id
 module.exports.retrieveUserById = (req, res, next) =>
 {
@@ -167,9 +196,9 @@ module.exports.existemail = (req, res, next) =>
     model.existemail(data, callback);
 }
 
-module.exports.updateUserById = (req, res, next) =>
+module.exports.updateUserByusername = (req, res, next) =>
 {
-    if(req.body.username == undefined || req.body.email == undefined)
+    if(req.params.username == undefined || req.body.password)
     {
         res.status(400).json({
             message: "Error: username, email is undefined"
@@ -178,9 +207,8 @@ module.exports.updateUserById = (req, res, next) =>
     }
 
     const data = {
-        user_id: req.params.user_id,
-        username: req.body.username,
-        email: req.body.email
+        username: req.params.username,
+        password: req.body.password
     }
 
     const callback = (error, results, fields) => {
@@ -193,15 +221,14 @@ module.exports.updateUserById = (req, res, next) =>
             });
         } else {
             const responseBody = {
-                user_id: parseInt(req.params.user_id),
-                username: req.body.username,
-                email: req.body.email
+                username: req.params.username,
+                password: req.body.password
             }
             res.status(200).json(responseBody);
         }
     }
 
-    model.updateById(data, callback);
+    model.updateByusername(data, callback);
 }
 
 /// Endpoint A.5: Delete users

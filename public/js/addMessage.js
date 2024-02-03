@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", function () {
       event.preventDefault();
   
       // Retrieve form input values
-      // const username = document.getElementById("fixedUsername").value;
       const messageText = document.getElementById("messageText").value;
   
       // Log form input values for debugging purposes
@@ -36,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("responseData:", responseData);
   
         // Check if message submission was successful (HTTP status 200)
-        if (responseStatus == 200) {
+        if (responseStatus == 201) {
           // Redirect to the singleMessageInfo.html page upon success
           window.location.href = "message.html";
         } else {
@@ -47,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
       };
   
       // Perform a fetch request to update the message data
-      fetchMethod(currentUrl + "/api/message/" + username, callback, "PUT", data);
+      fetchMethod(currentUrl + "/api/message", callback, "POST", data);
   
       // Reset the form fields after submission
       messageForm.reset();

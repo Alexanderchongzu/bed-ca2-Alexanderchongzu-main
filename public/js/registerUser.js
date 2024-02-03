@@ -37,6 +37,8 @@ document.addEventListener("DOMContentLoaded", function () {
           if (responseData.token) {
             // Store the token in local storage
             localStorage.setItem("token", responseData.token);
+            localStorage.setItem("userId", responseData.userId);
+            localStorage.setItem("email", responseData.email);
             // Redirect or perform further actions for logged-in user
             window.location.href = "index.html";
           }

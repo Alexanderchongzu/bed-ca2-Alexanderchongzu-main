@@ -8,9 +8,9 @@ module.exports.checkPetId = (data, callback) => // Endpoint B.11--Post a Pet Res
 {
     const SQLSTATEMENT = `
         SELECT * FROM Pet
-        WHERE pet_id = ?;
+        WHERE petname = ?;
         `;
-    const VALUES = [data.pet_id];
+    const VALUES = [data.petname];
 
     pool.query(SQLSTATEMENT, VALUES, callback);
 }
@@ -19,10 +19,10 @@ module.exports.createNewPetRest = (data, callback) => // Endpoint B.11--Post a P
 
 {
     const SQLSTATEMENT = `
-        INSERT INTO PetRest (pet_id, duration_minutes, rest_status)
+        INSERT INTO PetRest (petname, area, rest_date)
         VALUES (?, ?, NOW());
         `;
-    const VALUES = [ data.pet_id, data.duration_minutes, data.rest_status];
+    const VALUES = [data.petname, data.area, data.rest_date];
 
     pool.query(SQLSTATEMENT, VALUES, callback);
 }
@@ -47,7 +47,16 @@ module.exports.retrieveAllPetRest = (callback) => //Endpoint B.13--Get all Resti
 
     pool.query(SQLSTATMENT, callback);
 }
+module.exports.retrievepetname = (callback) => //Endpoint B.13--Get all Resting status
+{
+    const SQLSTATMENT = `
+    SELECT Pet.petname, PetRest.area, PetRest.rest_date
+    FROM Pet
+    INNER JOIN PetRest ON Pet.petname = PetRest.petname;
+    `;
 
+    pool.query(SQLSTATMENT, callback);
+}
 module.exports.existRestId = (data, callback) => //Endpoint B.14--Update a Pet Rest
 {
     const SQLSTATEMENT = `
@@ -63,19 +72,19 @@ module.exports.updatePetRestById = (data, callback) => //Endpoint B.14--Update a
 
     const SQLSTATMENT = `
         UPDATE PetRest
-        SET duration_minutes = CASE
+        SET area = CASE
                                 WHEN ? > 1440 THEN 1440
                                 ELSE ?
                                END,
-            rest_status = CURRENT_TIMESTAMP()
+            rest_date = CURRENT_TIMESTAMP()
         WHERE rest_id = ?;
 
-        SELECT rest_status 
+        SELECT rest_date 
         FROM PetRest
         WHERE rest_id = ?;
         `;
 
-    const VALUES = [data.duration_minutes, data.duration_minutes, data.rest_status, data.rest_id, data.rest_id];
+    const VALUES = [data.area, data.area, data.rest_date, data.rest_id, data.rest_id];
     pool.query(SQLSTATMENT, VALUES, callback);
 }
 

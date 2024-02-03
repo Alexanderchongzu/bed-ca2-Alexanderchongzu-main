@@ -7,14 +7,14 @@ module.exports.createMessage = (req, res, next) => {
         res.status(400).send("Error: message_text is undefined");
         return;
     }
-    else if(req.body.user_id == undefined)
+    else if(req.body.username == undefined)
     {
         res.status(400).send("Error: user_id is undefined");
         return;
     }
 
     const data = {
-        user_id: req.body.user_id,
+        username: req.body.username,
         message_text: req.body.message_text
     }
 
@@ -68,10 +68,10 @@ module.exports.readAllMessage = (req, res, next) => {
     model.selectAll(callback);
 }
 
-module.exports.updateMessageById = (req, res, next) => {
-    if(req.params.id == undefined)
+module.exports.updateMessageByUsername = (req, res, next) => {
+    if(req.params.username == undefined)
     {
-        res.status(400).send("Error: id is undefined");
+        res.status(400).send("Error: username is undefined");
         return;
     }
     else if(req.body.message_text == undefined || req.body.message_text == "")
@@ -79,15 +79,10 @@ module.exports.updateMessageById = (req, res, next) => {
         res.status(400).send("Error: message_text is undefined or empty");
         return;
     }
-    else if(req.body.user_id == undefined)
-    {
-        res.status(400).send("Error: userId is undefined");
-        return;
-    }
+    
 
     const data = {
-        id: req.params.id,
-        user_id: req.body.user_id,
+        username: req.params.username,
         message_text: req.body.message_text
     }
 
@@ -100,22 +95,22 @@ module.exports.updateMessageById = (req, res, next) => {
         }
     }
 
-    model.updateById(data, callback);
+    model.updateByUsername(data, callback);
 }
 
-module.exports.deleteMessageById = (req, res, next) => {
+module.exports.deleteMessageByName = (req, res, next) => {
     const data = {
-        id: req.params.id
+        username: req.params.username
     }
 
     const callback = (error, results, fields) => {
         if (error) {
-            console.error("Error deleteMessageById:", error);
+            console.error("Error deleteMessageByName:", error);
             res.status(500).json(error);
         } else {
             res.status(200).json(results);
         }
     }
 
-    model.deleteById(data, callback);
+    model.deleteByName(data, callback);
 }

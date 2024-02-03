@@ -27,7 +27,6 @@ CREATE TABLE User (
 CREATE TABLE Task (
     task_id INT PRIMARY KEY AUTO_INCREMENT,
     title TEXT,
-    description TEXT,
     points INT
 );
 
@@ -56,36 +55,35 @@ CREATE TABLE PetBonding (
 
 CREATE TABLE PetRest (
     rest_id INT PRIMARY KEY AUTO_INCREMENT,
-    pet_id INT NOT NULL,
-    duration_minutes INT,
-    rest_status TIMESTAMP
+    petname TEXT,
+    area TEXT,
+    rest_date TIMESTAMP
 );
 
 CREATE TABLE Grooming (
     groom_id INT PRIMARY KEY AUTO_INCREMENT,
+    item TEXT,
     points INT 
 );
 
 CREATE TABLE Messages (
     id INT PRIMARY KEY AUTO_INCREMENT,
     message_text TEXT NOT NULL,
-    user_id INT NOT NULL,
+    username TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
   );
   
-INSERT INTO Messages (message_text, user_id) VALUES
-    ("Hello world!", 1),
-    ("Yummy!", 2),  
-    ("I am the one", 3);
+INSERT INTO Messages (message_text, username) VALUES
+    ("Hello world!", "new"),
+    ("Yummy!", "abc"),  
+    ("I am the one", "xxx");
 
-
-INSERT INTO Task (title, description, points) VALUES
-('Plant a Tree', 'Plant a tree in your neighbourhood or a designated green area.', 50),
-('Use Public Transportation', 'Use public transportation or carpool instead of driving alone.', 30),
-('Reduce Plastic Usage', 'Commit to using reusable bags and containers.', 40),
-('Energy Conservation', 'Turn off lights and appliances when not in use.', 25),
-('Composting', 'Start composting kitchen scraps to create natural fertilizer.', 35);
-
+INSERT INTO Task (title, points) VALUES
+    ("Plant a Tree", "50"),
+    ("Use Public Transport", "30"),
+    ("Reduce Plastic", "40"),
+    ("Enegry Conversation", "25"),
+    ("Composting", "35");
 
 `;
 
@@ -100,4 +98,9 @@ pool.query(SQLSTATEMENT, (error, results, fields) => {
     process.exit();
 });
 
-
+// INSERT INTO Task (username, title, description, points) VALUES
+// ('Plant a Tree', 'Plant a tree in your neighbourhood or a designated green area.', 50),
+// ('Use Public Transportation', 'Use public transportation or carpool instead of driving alone.', 30),
+// ('Reduce Plastic Usage', 'Commit to using reusable bags and containers.', 40),
+// ('Energy Conservation', 'Turn off lights and appliances when not in use.', 25),
+// ('Composting', 'Start composting kitchen scraps to create natural fertilizer.', 35);

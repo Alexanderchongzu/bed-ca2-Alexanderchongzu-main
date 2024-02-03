@@ -6,7 +6,7 @@ const controller = require('../controllers/messageController');
 router.get('/', controller.readAllMessage);
 router.post('/', controller.createMessage);
 router.get('/:id', controller.readMessageById);
-router.put('/:id', controller.updateMessageById);
-router.delete('/:id', controller.deleteMessageById);
+router.put('/:username', controller.updateMessageByUsername);
+router.delete('/:username', controller.deleteMessageByName);
 
 module.exports = router;

@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const callback = (responseStatus, responseData) => {
         console.log("responseStatus:", responseStatus);
         console.log("responseData:", responseData);
- 
+
         const challengeList = document.getElementById("messageList");
         responseData.forEach((challenge) => {
             // Rest of the code will be added here
@@ -12,16 +12,17 @@ document.addEventListener("DOMContentLoaded", function () {
             displayItem.innerHTML = `
         <div class="card">
             <div class="card-body">
-                <p class="card-text">
+                <p class="card-text">          
+                    <strong>User:</strong> ${challenge.username} <br>
                     <strong>Message:</strong> ${challenge.message_text} <br>
-                    <strong>User:</strong> ${challenge.user_id} <br>
+                    <strong>Timestamp:</strong> ${challenge.created_at} <br>
                 </p>
             </div>
         </div>
         `;
-        challengeList.appendChild(displayItem);
+            challengeList.appendChild(displayItem);
         });
     };
- 
+
     fetchMethod(currentUrl + "/api/message", callback);
 });

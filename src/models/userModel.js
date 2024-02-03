@@ -45,13 +45,30 @@ module.exports.retrieveAll = (callback) => //Endpoint A.2A
     pool.query(SQLSTATMENT, callback);
 }
 
-module.exports.retrieveUsername = (callback) => //Endpoint A.2B
+module.exports.usertask = (callback) => //Endpoint A.2A
 {
     const SQLSTATMENT = `
-    SELECT username FROM User;
+    SELECT * FROM User;
     `;
 
     pool.query(SQLSTATMENT, callback);
+}
+
+module.exports.retrieveUsername = (data, callback) => //Endpoint A.2B
+{
+    const SQLSTATMENT = `
+    SELECT user.user_id, 
+    user.username,
+    user.email,
+    COALESCE(SUM(task.points), 0) AS total_points
+    FROM user
+    LEFT JOIN taskprogress ON user.user_id = taskprogress.user_id
+    LEFT JOIN task ON taskprogress.task_id = task.task_id
+    WHERE user.username = ?;
+    `;
+    const VALUES = [data.username];
+
+    pool.query(SQLSTATMENT, VALUES, callback);
 }
 module.exports.retrieveById = (data, callback) => //Endpoint A.3
 {
@@ -88,14 +105,13 @@ module.exports.existemail = (data, callback) => //Endpoint A.4
 
     pool.query(SQLSTATEMENT, VALUES, callback);
 }
-module.exports.updateById = (data, callback) => //Endpoint A.4
+module.exports.updateByusername = (data, callback) => //Endpoint A.4
 {
     const SQLSTATMENT = `
-        UPDATE User 
-        SET username = ?, email = ?
-        WHERE user_id = ?;
+        UPDATE User SET password = ? 
+        WHERE username = ?; 
         `;
-    const VALUES = [data.username, data.email, data.user_id];
+    const VALUES = [data.password, data.username];
 
     pool.query(SQLSTATMENT, VALUES, callback);
 }

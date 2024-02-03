@@ -56,6 +56,7 @@ module.exports.retrieveAlltasks = (req, res, next) =>
     model.retrievetasks(callback);
 }
 
+
 /// Endpoint A.8: Retrieve all task by id
 module.exports.retrieveTaskById = (req, res, next) =>
 {

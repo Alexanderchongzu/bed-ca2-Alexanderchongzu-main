@@ -27,48 +27,87 @@
           <li class="nav-item">
             <a class="nav-link" href="home.html">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="petlist.html">Pet List</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button"
+            data-bs-toggle="dropdown">Pet</a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" href="petlist.html">All Pet</a>
+            </li>
+              <li>
+                <a class="dropdown-item" href="addpet.html">Add Pet</a>
+              </li>
+            </ul>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="addpet.html">Add Pet</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button"
+            data-bs-toggle="dropdown">Message</a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" href="message.html">All Message</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="addmessage.html">New Message</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="updatemessage.html">Update Message</a>
+            </li>
+              <li>
+                <a class="dropdown-item" href="deletemessage.html">Delete Message</a>
+              </li>
+            </ul>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="message.html">Message</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button"
+            data-bs-toggle="dropdown">Services</a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" href="grooming.html">Groom Menu</a>
+            </li>
+              <li>
+                <a class="dropdown-item" href="petrest.html">Rest Area</a>
+              </li>
+            </ul>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="updatemessage.html">Update Message</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="groompoints.html">Groom Points</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="grooming.html">Grooming</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button"
+              data-bs-toggle="dropdown">Profile</a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="profile.html">User profile</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="usertask.html">User Task</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="addtaskprogress.html">Task Progress</a>
+              </li>
+            </ul>
           </li>
         </ul>
+      </div>
       </div>
       <div class="collapse navbar-collapse" id="navbarNav">
         <!-- ms-auto: margin-left: auto -->
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a id="profileButton" href="profile.html" class="nav-link">Profile</a>
+            <a id="profileButton" href="#" class="nav-link"></a>
           </li>
           <li class="nav-item">
-            <a id="logoutButton" href="#" class="nav-link">Logout</a>
+            <a id="logoutButton" href="#" class="nav-link"class="nav-link">Logout</a>
           </li>
           <li class="nav-item">
-            <a id="loginButton" href="login.html" class="nav-link">Login</a>
+            <a id="loginButton" href="/login.html" class="nav-link">Login</a>
           </li>
           <li>
             <div class="btn-nav">
-              <a id="registerButton" class="btn navbar-btn" href="register.html">Register!</a>
+              <a id="registerButton" class="btn text-bg-dark btn-small navbar-btn" href="/register.html">Register!</a>
             </div>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-
   <main class="py-4">
     <div class="container-fluid" style="margin-top: 3rem;">
       <div class="row justify-content-center">

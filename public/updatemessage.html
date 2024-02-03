@@ -14,9 +14,9 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
-      <a class="navbar-brand" href="index.html">
+      <a class="navbar-brand" href="home.html">
         <img src="images/logo.png" alt="Your Logo" class="logo img-fluid" />
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -24,86 +24,125 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <!-- me-auto: margin-right: auto -->
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
             <a class="nav-link" href="home.html">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="petlist.html">Pet List</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button"
+            data-bs-toggle="dropdown">Pet</a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" href="petlist.html">All Pet</a>
+            </li>
+              <li>
+                <a class="dropdown-item" href="addpet.html">Add Pet</a>
+              </li>
+            </ul>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="addpet.html">Add Pet</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button"
+            data-bs-toggle="dropdown">Message</a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" href="message.html">All Message</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="addmessage.html">New Message</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="updatemessage.html">Update Message</a>
+            </li>
+              <li>
+                <a class="dropdown-item" href="deletemessage.html">Delete Message</a>
+              </li>
+            </ul>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="message.html">Message</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button"
+            data-bs-toggle="dropdown">Services</a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" href="grooming.html">Groom Menu</a>
+            </li>
+              <li>
+                <a class="dropdown-item" href="petrest.html">Rest Area</a>
+              </li>
+            </ul>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="updatemessage.html">Update Message</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="groompoints.html">Groom Points</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="grooming.html">Grooming</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button"
+              data-bs-toggle="dropdown">Profile</a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="profile.html">User profile</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="usertask.html">User Task</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="addtaskprogress.html">Task Progress</a>
+              </li>
+            </ul>
           </li>
         </ul>
+      </div>
       </div>
       <div class="collapse navbar-collapse" id="navbarNav">
         <!-- ms-auto: margin-left: auto -->
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a id="profileButton" href="profile.html" class="nav-link">Profile</a>
+            <a id="profileButton" href="#" class="nav-link"></a>
           </li>
           <li class="nav-item">
-            <a id="logoutButton" href="#" class="nav-link">Logout</a>
+            <a id="logoutButton" href="#" class="nav-link"class="nav-link">Logout</a>
           </li>
           <li class="nav-item">
-            <a id="loginButton" href="login.html" class="nav-link">Login</a>
+            <a id="loginButton" href="/login.html" class="nav-link">Login</a>
           </li>
           <li>
             <div class="btn-nav">
-              <a id="registerButton" class="btn navbar-btn" href="register.html">Register!</a>
+              <a id="registerButton" class="btn text-bg-dark btn-small navbar-btn" href="/register.html">Register!</a>
             </div>
           </li>
         </ul>
       </div>
     </div>
   </nav>
+  
+  <main class="py-4 d-flex justify-content-center">
 
-  <main class="py-4">
-    <br>
-      <h2 class="text-center mb -4 mt-6" style="font-family: verdana, sans-serif; font-size: 40px;">
-        Update Message</h2>
     <div class="container">
-      <div class="row justify-content-center mt-5">
-        <div class="col-md-6 px-5">
-          <form id="messageForm">
-            <div class="form-group pb-3">
-              <label for="messageId">Message ID</label>
-              <input type="number" class="form-control" id="messageId" required>
-            </div>
-            <div class="form-group pb-3">
-              <label for="messageText">Message</label>
-              <input type="text" class="form-control" id="messageText" required>
-            </div>
-            <button type="submit" class="btn btn-primary btn-block">Send</button>
-          </form>
+      <br><br><br><br><br>
+      <h2 class="text-center mb-4 mt-6" style="font-family: verdana, sans-serif; font-size: 40px;">Update Message</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-10 mb-4 card"
+          style="width: 100%; position: relative; background-color: azure; box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5);">
+          <div class="card-body row mt-5">
+            <form id="messageForm">
 
-          <div id="warningCard" class="card border-danger mt-3 mb-3 d-none">
-            <div class="card-body text-danger">
-              <p id="warningText" class="card-text"></p>
+              <div class="form-group mb-4">
+                <label for="username">Username: <span id="fixedUsername"></span></label>
+                <id="username" required disabled>
+              </div>
+              <div class="form-group mb-4">
+                <label for="messageText">Message:</label>
+                <input type="text" class="form-control" id="messageText" required>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block mb-4 text-dark">Update</button>
+            </form>
+            <div id="warningCard" class="card border-danger mb-3 d-none">
+              <div class="card-body text-danger">
+                <p id="warningText" class="card-text"></p>
+              </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>
-
-
   </main>
 
-  <footer class="mt-auto py-3 bg-primary text-bg-primary text-center">
+  <footer class=" mt-auto py-3 bg-primary text-bg-primary text-center">
     <br>
     <p class="m-0 py-0 px-8"> &copy; 2024 PetLink. All Rights Reserved.</p><br>
   </footer>

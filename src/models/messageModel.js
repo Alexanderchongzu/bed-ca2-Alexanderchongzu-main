@@ -23,33 +23,33 @@ module.exports.selectById = (data, callback) =>
 module.exports.insertSingle = (data, callback) =>
 {
     const SQLSTATMENT = `
-    INSERT INTO Messages (message_text, user_id)
+    INSERT INTO Messages (message_text, username)
     VALUES (?, ?);
     `;
-    const VALUES = [data.message_text, data.user_id];
+    const VALUES = [data.message_text, data.username];
 
     pool.query(SQLSTATMENT, VALUES, callback);
 }
 
-module.exports.updateById = (data, callback) =>
+module.exports.updateByUsername = (data, callback) =>
 {
     const SQLSTATMENT = `
     UPDATE Messages 
-    SET message_text = ?, user_id = ?
-    WHERE id = ?;
+    SET message_text = ?
+    WHERE username = ?;
     `;
-    const VALUES = [data.message_text, data.user_id, data.id];
+    const VALUES = [data.message_text, data.username];
 
     pool.query(SQLSTATMENT, VALUES, callback);
 }
 
-module.exports.deleteById = (data, callback) =>
+module.exports.deleteByName = (data, callback) =>
 {
     const SQLSTATMENT = `
     DELETE FROM Messages 
-    WHERE id = ?;
+    WHERE username = ?;
     `;
-    const VALUES = [data.id];
+    const VALUES = [data.username];
 
     pool.query(SQLSTATMENT, VALUES, callback);
 }

@@ -8,10 +8,10 @@ const pool = require('../services/db');
 module.exports.insertGrooming = (data, callback) => //Endpoint A.6
 {
     const SQLSTATEMENT = `
-        INSERT INTO Grooming (points)
-        VALUES (?);
+        INSERT INTO Grooming (item, points)
+        VALUES (?, ?);
         `;
-    const VALUES = [data.points];
+    const VALUES = [data.item, data.points];
 
     pool.query(SQLSTATEMENT, VALUES, callback);
 }
@@ -35,6 +35,7 @@ module.exports.retrieveGroomingId = (data, callback) => //Endpoint A.8
 
     pool.query(SQLSTATMENT, VALUES, callback);
 }
+
 
 module.exports.updateGroomingById = (data, callback) => //Endpoint A.9
 {

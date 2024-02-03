@@ -7,7 +7,7 @@ const model = require("../models/groomingModel");
 /// Endpoint A.6: Create new grooming
 module.exports.createGrooming = (req, res, next) =>
 {
-    if (req.body.points == undefined)
+    if (req.body.item == undefined || eq.body.points == undefined)
     {
         res.status(400).json({
             message: "Bad Reuqest"
@@ -16,6 +16,7 @@ module.exports.createGrooming = (req, res, next) =>
     }
 
     const data = {
+        item: req.body.item,
         points:  req.body.points
     }
 
@@ -29,6 +30,7 @@ module.exports.createGrooming = (req, res, next) =>
         } else {
             const responseBody = {
                 groom_id:    results.insertId,
+                item: req.body.item,
                 points:      data.points
             };
             res.status(201).json(responseBody);

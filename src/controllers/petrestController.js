@@ -8,7 +8,7 @@ const model = require("../models/petrestModel");
 module.exports.checkPetId = (req, res, next) =>
 {
     const data = {
-        pet_id: req.body.pet_id
+        petname: req.body.petname
     }
 
     const callback = (error, results, fields) => {
@@ -32,16 +32,16 @@ module.exports.checkPetId = (req, res, next) =>
 
 module.exports.createNewPetRest = (req, res, next) =>
 {    
-    if (req.body.duration_minutes == undefined || req.body.rest_status == undefined)
+    if (req.body.petname == undefined || req.body.area == undefined || req.body.rest_date == undefined)
     {
         res.status(400).send("Error: Bad Request");
         return;
     }
     
     const data = {
-        pet_id: req.body.pet_id,
-        duration_minutes: req.body.duration_minutes,
-        rest_status: req.body.rest_status
+        petname: req.body.petname,
+        area: req.body.area,
+        rest_date: req.body.rest_date
     }
     
     const callback = (error, results, fields) =>
@@ -54,9 +54,9 @@ module.exports.createNewPetRest = (req, res, next) =>
         } else {
             const responseBody = {
                 petrest_id: results.insertId,
-                pet_id: req.body.pet_id,
-                duration_minutes: req.body.duration_minutes,
-                rest_status: req.body.rest_status
+                petname: req.body.petname,
+                area: req.body.area,
+                rest_date: req.body.rest_date
             }
             res.status(201).json(responseBody);
         }               
@@ -106,11 +106,25 @@ module.exports.retrieveAllPetRest = (req, res, next) =>
     model.retrieveAllPetRest(callback);
 }
 
+/// Endpoint B.13--Get all Resting status
+module.exports.retrievepetname = (req, res, next) =>
+{
+    const callback = (error, results, fields) => {
+        if (error) {
+            console.error("Error RetrieveAllPetRest:", error);
+            res.status(500).json(error);
+        } 
+        else res.status(200).json(results);
+    }
+
+    model.retrievepetname(callback);
+}
+
 /// Endpoint B.14--Update a Pet Rest
 module.exports.existRestId = (req, res, next) =>
 {
     const data = {
-        pet_id: req.body.pet_id,
+        petname: req.body.petname,
         rest_id: req.params.rest_id
     }
 
@@ -124,9 +138,9 @@ module.exports.existRestId = (req, res, next) =>
                 res.status(404).json({
                     message: "rest_id does not exist"
                 });
-            } else if (results[0].pet_id != data.pet_id) {
+            } else if (results[0].petname != data.petname) {
                 res.status(409).json({
-                    message: "pet_id is associated with another rest_id"
+                    message: "petname is associated with another rest_id"
                 });
             } else {
                 next();
@@ -140,7 +154,7 @@ module.exports.existRestId = (req, res, next) =>
 module.exports.updatePetRestById = (req, res, next) =>
 {
     
-    if(req.body.pet_id == undefined || req.body.duration_minutes == undefined)
+    if(req.body.petname == undefined || req.body.area == undefined)
     {
         res.status(400).json({
             message: "Error: Bad Request"
@@ -148,18 +162,18 @@ module.exports.updatePetRestById = (req, res, next) =>
         return;
     }
     
-    const durationMinutes = parseInt(req.body.duration_minutes);
+    const durationMinutes = parseInt(req.body.area);
     if(isNaN(durationMinutes) || durationMinutes > 1440) {
         res.status(400).json({
-            message: "Invalid duration_minutes as one day only have 1440 minutes."
+            message: "Invalid area as one day only have 1440 minutes."
         });
         return;
     }
 
     const data = {
         rest_id: req.params.rest_id,
-        pet_id: req.body.pet_id,
-        duration_minutes: durationMinutes
+        petname: req.body.petname,
+        area: durationMinutes
     };
 
     const callback = (error, results, fields) => {
@@ -169,9 +183,9 @@ module.exports.updatePetRestById = (req, res, next) =>
         } else {
                 const responseBody = {
                 rest_id: parseInt(req.params.rest_id),
-                pet_id: req.body.pet_id,
-                duration_minutes: durationMinutes,                
-                rest_status: results[1][0].rest_status
+                petname: req.body.petname,
+                area: durationMinutes,                
+                rest_date: results[1][0].rest_date
             };
             res.status(200).json(responseBody);
         }
