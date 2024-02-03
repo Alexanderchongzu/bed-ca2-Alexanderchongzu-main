@@ -355,56 +355,69 @@ The following are the pet rest routes:
 
 - Entity-Relationship Diagram (ERD): https://dbdiagram.io/d/654333077d8bbd6465529c8c
 
-CREATE TABLE User (
-  user_id INT PRIMARY KEY,
-  username TEXT,
+
+##### Modified Database Structures for CA2
+
+Table User {
+  user_id INT [PRIMARY KEY] 
+  username TEXT
   email TEXT
-);
+  password TEXT
+}
 
-CREATE TABLE Task (
-  task_id INT PRIMARY KEY,
-  title TEXT,
-  description TEXT,
+Table Task {
+  task_id INT [PRIMARY KEY] 
+  title TEXT
   points INT
-);
+}
 
-CREATE TABLE TaskProgress (
-  progress_id INT PRIMARY KEY,
-  user_id INT NOT NULL,
-  task_id INT NOT NULL,
-  completion_date TIMESTAMP,
+Table TaskProgress {
+  progress_id INT [PRIMARY KEY]
+  user_id INT [NOT NULL]
+  task_id INT [NOT NULL]
+  completion_date TIMESTAMP
   notes TEXT
-);
+}
 
-CREATE TABLE Pet (
-  pet_id INT PRIMARY KEY,
-  user_id INT NOT NULL,
-  petname TEXT,
-  breeds TEXT,
+Table Pet {
+  pet_id INT [PRIMARY KEY]
+  username TEXT
+  petname TEXT
+  breeds TEXT
   notes TEXT
-);
+}
 
-CREATE TABLE PetBonding (
-  petbonding_id INT PRIMARY KEY,
-  pet_id INT NOT NULL,
-  groom TEXT,
-  feed TEXT,
-  bonding_on TIMESTAMP
-);
+Table PetBonding {
+  petbonding_id INT [PRIMARY KEY] 
+  pet_id INT [NOT NULL]
+  groom_id INT [NOT NULL]
+  feed TEXT
+}
 
-CREATE TABLE PetRest (
-  rest_id INT PRIMARY KEY,
-  pet_id INT NOT NULL,
-  duration_minutes INT,
-  rest_status TIMESTAMP
-);
+Table PetRest {
+  rest_id INT [PRIMARY KEY]
+  petname TEXT
+  area TEXT
+  rest_date TIMESTAMP
+}
 
-ALTER TABLE User ADD FOREIGN KEY (user_id) REFERENCES TaskProgress (user_id);
+Table Grooming {
+  groom_id INT [PRIMARY KEY]
+  item TEXT
+  points INT [NOT NULL]
+  }
 
-ALTER TABLE Task ADD FOREIGN KEY (task_id) REFERENCES TaskProgress (task_id);
+Ref: User.user_id > TaskProgress.user_id
 
-ALTER TABLE User ADD FOREIGN KEY (user_id) REFERENCES Pet (user_id);
+Ref: Task.task_id > TaskProgress.task_id
 
-ALTER TABLE Pet ADD FOREIGN KEY (pet_id) REFERENCES PetBonding (pet_id);
+Ref: User.username > Pet.username
 
-ALTER TABLE Pet ADD FOREIGN KEY (pet_id) REFERENCES PetRest (pet_id);
+Ref: Pet.pet_id > PetBonding.pet_id
+
+Ref: Pet.petname > PetRest.petname
+
+Ref: Task.points > Grooming.points
+
+Ref: PetBonding.groom_id > Grooming.groom_id
+

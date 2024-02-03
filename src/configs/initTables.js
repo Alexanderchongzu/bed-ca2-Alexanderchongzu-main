@@ -85,6 +85,7 @@ INSERT INTO Task (title, points) VALUES
     ("Enegry Conversation", "25"),
     ("Composting", "35");
 
+
 `;
 
 
